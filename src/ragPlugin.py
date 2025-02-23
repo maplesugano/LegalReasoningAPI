@@ -1,5 +1,5 @@
 from semantic_kernel.functions import kernel_function
-from parquet_utils import load_parquet_files, convert_response_to_string, process_context_data
+from src.parquet_utils import load_parquet_files, convert_response_to_string, process_context_data
 
 from graphrag.query.structured_search.local_search.search import LocalSearch
 from graphrag.query.structured_search.local_search.mixed_context import LocalSearchMixedContext

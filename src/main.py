@@ -6,8 +6,9 @@ from fastapi.middleware.cors import CORSMiddleware
 
 from semantic_kernel import Kernel
 from semantic_kernel.contents.chat_history import ChatHistory
-from ragPlugin import RAGPlugin
-from settings import setup, load_settings_from_yaml
+from src.ragPlugin import RAGPlugin
+
+from src.settings import setup, load_settings_from_yaml
 
 from langchain.embeddings import OpenAIEmbeddings
 

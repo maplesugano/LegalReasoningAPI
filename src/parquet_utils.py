@@ -2,7 +2,7 @@ import json
 from typing import Union, List, Dict, Any
 import pandas as pd
 from graphrag.query.structured_search.base import SearchResult
-from constants import (
+from src.constants import (
     COMMUNITY_REPORT_TABLE,
     ENTITY_TABLE,
     ENTITY_EMBEDDING_TABLE,
