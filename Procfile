@@ -1,1 +1,1 @@
-web: cp -r artifacts/lancedb /app/artifacts/lancedb && python src/main.py
+web: python src/main.py
