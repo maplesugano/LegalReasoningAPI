@@ -10,7 +10,7 @@ from src.ragPlugin import RAGPlugin
 
 from src.settings import setup, load_settings_from_yaml
 
-from langchain.embeddings import OpenAIEmbeddings
+from langchain_openai import OpenAIEmbeddings
 
 app = FastAPI()
 
