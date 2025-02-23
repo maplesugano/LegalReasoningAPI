@@ -30,10 +30,6 @@ class Settings(BaseSettings):
     COMMUNITY_LEVEL: int = 2
     RESPONSE_TYPE: str = "single paragraph"
 
-    class Config:
-        env_file = ".env"
-        env_file_encoding = 'utf-8'
-
 def setup(settings: Settings):
     """
     Initialize the ChatOpenAI and OpenAIEmbedding instances based on the settings.

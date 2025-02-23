@@ -1,1 +1,1 @@
-web: uvicorn src.main:app --host 0.0.0.0 --port $PORT
+web: cp -r artifacts/lancedb /app/artifacts/lancedb && python src/main.py
