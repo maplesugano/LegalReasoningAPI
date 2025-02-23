@@ -26,7 +26,7 @@ class Settings(BaseSettings):
     GRAPHRAG_EMBEDDING_API_BASE: Optional[str] = None
 
     GRAPHRAG_CLAIM_EXTRACTION_ENABLED: bool = False
-    INPUT_DIR: str = "./artifacts"
+    INPUT_DIR: Optional[str] = None
     COMMUNITY_LEVEL: int = 2
     RESPONSE_TYPE: str = "single paragraph"
 
@@ -87,4 +87,5 @@ def load_settings_from_yaml(file_path: str) -> Settings:
             env_var_name = value.replace("ENV_", "")
             config_dict[key] = os.getenv(env_var_name, f"Missing {env_var_name}")
 
+    print(config_dict["INPUT_DIR"])
     return Settings(**config_dict)
