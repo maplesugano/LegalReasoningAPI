@@ -9,6 +9,7 @@ from semantic_kernel.connectors.ai.open_ai.prompt_execution_settings.open_ai_pro
 )
 import yaml
 from typing import Optional
+import os
 
 class Settings(BaseSettings):
     OPENAI_API_KEY: Optional[str] = None
@@ -18,8 +19,6 @@ class Settings(BaseSettings):
     PINECONE_API_KEY: Optional[str] = None
     PINECONE_INDEX_NAME: Optional[str] = None
     PINECONE_ENV: Optional[str] = None   
-
-    ORS_API_KEY: Optional[str] = None
 
     GRAPHRAG_LLM_MODEL: str = "gpt-4o-mini"
     GRAPHRAG_LLM_API_BASE: Optional[str] = None
@@ -78,17 +77,14 @@ def setup(settings: Settings):
 
     return llm, text_embedder, chat_completion, execution_settings
 
-
-def load_settings_from_yaml(yaml_file: str) -> Settings:
-    """
-    Load settings from a YAML file and override with environment variables.
-
-    Args:
-        yaml_file (str): Path to the YAML configuration file.        
-
-    Returns:
-        Settings: Pydantic Settings object with merged configurations.
-    """
-    with open(yaml_file, 'r', encoding='utf-8') as file:
+def load_settings_from_yaml(file_path: str) -> Settings:
+    with open(file_path, "r") as file:
         config_dict = yaml.safe_load(file)
+
+    # Replace placeholders with actual environment variables
+    for key, value in config_dict.items():
+        if isinstance(value, str) and value.startswith("ENV_"):
+            env_var_name = value.replace("ENV_", "")
+            config_dict[key] = os.getenv(env_var_name, f"Missing {env_var_name}")
+
     return Settings(**config_dict)

@@ -6,7 +6,7 @@
 
 models:
   default_chat_model:
-    api_key: {{ secrets.OPENAI_API_KEY }} # set this in the generated .env file
+    api_key: ENV_OPENAI_API_KEY # set this in the generated .env file
     type: openai_chat # or azure_openai_chat
     auth_type: api_key # or azure_managed_identity
     model: gpt-4o-mini
@@ -14,21 +14,21 @@ models:
     parallelization_num_threads: 50
     parallelization_stagger: 0.3
     async_mode: threaded # or asyncio
-    organization: {{ secrets.OPENAI_ORG_ID }}
+    organization: ENV_OPENAI_ORG_ID
     # audience: "https://cognitiveservices.azure.com/.default"
     # api_base: https://<instance>.openai.azure.com
     # api_version: 2024-02-15-preview
     # organization: <organization_id>
     # deployment_name: <azure_model_deployment_name>
   default_embedding_model:
-    api_key: {{ secrets.OPENAI_API_KEY }}
+    api_key: ENV_OPENAI_API_KEY
     type: openai_embedding # or azure_openai_embedding
     auth_type: api_key # or azure_managed_identity
     model: text-embedding-3-small
     parallelization_num_threads: 50
     parallelization_stagger: 0.3
     async_mode: threaded # or asyncio
-    organization: {{ secrets.OPENAI_ORG_ID }}
+    organization: ENV_OPENAI_ORG_ID
     # api_base: https://<instance>.openai.azure.com
     # api_version: 2024-02-15-preview
     # audience: "https://cognitiveservices.azure.com/.default"
