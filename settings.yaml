@@ -8,6 +8,6 @@ GRAPHRAG_EMBEDDING_MODEL: text-embedding-3-small
 GRAPHRAG_EMBEDDING_API_BASE: null
 GRAPHRAG_CLAIM_EXTRACTION_ENABLED: False
 SERVICE_ID: sk-test
-INPUT_DIR: "./legalRAG/output/"
+INPUT_DIR: "./artifacts"
 COMMUNITY_LEVEL: 2
 RESPONSE_TYPE: "single paragraph"
