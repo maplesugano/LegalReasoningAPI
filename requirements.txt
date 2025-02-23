@@ -10,3 +10,4 @@ pinecone
 langchain
 pinecone-client
 langchain_community
+graphrag
