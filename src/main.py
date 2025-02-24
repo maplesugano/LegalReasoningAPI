@@ -13,7 +13,7 @@ from src.settings import setup, load_settings_from_yaml
 from langchain.embeddings import OpenAIEmbeddings
 from fastapi import WebSocket
 
-app = FastAPI()
+app = FastAPI(root_path="/")
 
 app.add_middleware(
     CORSMiddleware,
