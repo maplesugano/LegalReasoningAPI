@@ -20,6 +20,7 @@ app.add_middleware(
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
+    expose_headers=["Access-Control-Allow-Origin"],  # Explicitly expose headers
 )
 
 settings = load_settings_from_yaml("settings.yaml")
@@ -76,9 +77,12 @@ async def local_search(query: str = Query(..., description="Ask anything")):
         }
 
         rag_plugin.raw_RAG_result = None
-        return JSONResponse(content=response_dict)
+        return JSONResponse(
+            content=response_dict,
+            headers={"Access-Control-Allow-Origin": "*"}
+        )
     except Exception as e:
-        raise HTTPException(status_code=500, detail=str(e))
+        raise JSONResponse(status_code=500, detail=str(e), headers={"Access-Control-Allow-Origin": "*"})
     
 @app.get("/refresh_history")
 async def local_search():
