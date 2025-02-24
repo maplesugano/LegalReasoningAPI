@@ -17,7 +17,7 @@ app = FastAPI()
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],  # Use this only for testing
+    allow_origins=["https://irac-with-rag-0eb67bd7c93c.herokuapp.com/", "https://legal-reasoning-api-263518c65605.herokuapp.com/"],  # Use this only for testing
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
