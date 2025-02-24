@@ -11,6 +11,7 @@ from src.ragPlugin import RAGPlugin
 from src.settings import setup, load_settings_from_yaml
 
 from langchain.embeddings import OpenAIEmbeddings
+from fastapi import WebSocket
 
 app = FastAPI()
 
@@ -47,6 +48,11 @@ with open("system_prompt.txt", "r") as f:
 history.add_message({"role": "system", "content": system_prompt})
 
 embeddings = OpenAIEmbeddings(openai_api_key=settings.OPENAI_API_KEY)
+
+@app.websocket("/ws")
+async def websocket_endpoint(websocket: WebSocket):
+    await websocket.accept()
+    await websocket.send_text("WebSocket connection established")
 
 @app.get("/ask")
 async def local_search(query: str = Query(..., description="Ask anything")):
